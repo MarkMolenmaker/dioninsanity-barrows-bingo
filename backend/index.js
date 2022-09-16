@@ -13,7 +13,7 @@ require('dotenv').config();
 const app = express();
 
 // Connect to mongodb database
-const uri = `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@dioninsanity-barrows-bi.naldis3.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://dioninsanity-barrows-bingo:X03k4zHFdgEmanXl@dioninsanity-barrows-bi.naldis3.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -61,6 +61,6 @@ app.use("/generalbingocard", generalBingoCardRoutes);
 const playerRoutes = require("./api/bingocard/route/player");
 app.use("/player", playerRoutes);
 
-app.listen(process.env.PORT, () => {
-    console.log(`App is running on ${process.env.PORT}`);
+app.listen(8080, () => {
+    console.log(`App is running on 8080`);
 });
