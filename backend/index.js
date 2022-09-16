@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/db');
+const rateLimit = require("express-rate-limit");
 
 // Configure dotenv to load .env file
 require('dotenv').config();
@@ -34,9 +35,32 @@ app.get("/", (req, res) => {
     console.log("Hello World!");
 });
 
+// Configure limit to requests per second
+const limiter = rateLimit({
+    windowMs: 60 * 1000, // 1 Minute
+    max: 100, // Limit each IP to 100 requests per Minute,
+    standardHeaders: true, // Send standard rate limit headers
+    legacyHeaders: false, // Disable deprecated rate limit headers
+    message: "Too many requests from this IP, please try again in a minute"
+})
+app.use(limiter);
+
 // Define user route
 const userRoutes = require("./api/user/route/user");
 app.use("/user", userRoutes);
+
+// Define bingocard route
+const bingoCardRoutes = require("./api/bingocard/route/bingocard");
+app.use("/bingocard", bingoCardRoutes);
+
+// Define generalbingocard route
+const generalBingoCardRoutes = require("./api/bingocard/route/generalbingocard");
+app.use("/generalbingocard", generalBingoCardRoutes);
+
+// Define player route
+const playerRoutes = require("./api/bingocard/route/player");
+app.use("/player", playerRoutes);
+
 app.listen(process.env.PORT, () => {
     console.log(`App is running on ${process.env.PORT}`);
 });

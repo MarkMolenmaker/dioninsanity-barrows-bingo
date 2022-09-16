@@ -3,22 +3,32 @@ import home from '../views/home.vue'
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
-    component: home,
-    meta: {
-      requiresAuth: true
-    }
+    component: home
   },
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: () => import('../views/login.vue')
   },
+  // {
+  //   path: "/register",
+  //   name: "register",
+  //   component: () => import("../views/register.vue")
+  // },
   {
-    path: "/register",
-    name: "register",
-    component: () => import("../views/register.vue")
+    path: "/bingo",
+    name: "bingo",
+    component: () => import("../views/bingo.vue")
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/admin.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
@@ -31,7 +41,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (localStorage.getItem("jwt") == null) {
       next({
-        path: "/"
+        path: "/login"
       });
     } else {
       next();
