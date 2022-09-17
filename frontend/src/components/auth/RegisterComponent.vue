@@ -55,7 +55,7 @@ export default {
   methods: {
     async registerUser() {
       try {
-        let response = await axios.post("http://localhost:3000/user/register", this.register);
+        let response = await axios.post("https://dioninsanity-barrows-bingo-backend.netlify.app/user/register", this.register);
         console.log(response);
         let token = response.data.token;
         if (token) {

@@ -57,7 +57,7 @@ export default {
   methods: {
     increaseLoot(element) {
       this.loading = true;
-      axios.post(`http://localhost:3000/player/${this.selected_player}/add/${element}`, {}, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
+      axios.post(`https://dioninsanity-barrows-bingo-backend.netlify.app/player/${this.selected_player}/add/${element}`, {}, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
           .then(response => {
             this.user_loot = response.data.player.loot;
           })
@@ -70,7 +70,7 @@ export default {
     },
     decreaseLoot(element) {
       this.loading = true;
-      axios.post(`http://localhost:3000/player/${this.selected_player}/remove/${element}`, {}, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
+      axios.post(`https://dioninsanity-barrows-bingo-backend.netlify.app/player/${this.selected_player}/remove/${element}`, {}, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
           .then(response => {
             this.user_loot = response.data.player.loot;
           })
@@ -86,7 +86,7 @@ export default {
     },
     loadPlayerData(event) {
       this.loading = true;
-      axios.get(`http://localhost:3000/player/${event.target.value}`)
+      axios.get(`https://dioninsanity-barrows-bingo-backend.netlify.app/player/${event.target.value}`)
           .then(response => {
             this.user_loot = response.data.player.loot;
           })
@@ -114,7 +114,7 @@ export default {
 
     async function fetchUserLoot(user_name) {
       loading.value = true
-      data.value = await axios.get(`http://localhost:3000/player/${user_name}`)
+      data.value = await axios.get(`https://dioninsanity-barrows-bingo-backend.netlify.app/player/${user_name}`)
           .then(response => {
             loading.value = false
             return response.data
@@ -128,7 +128,7 @@ export default {
 
     async function fetchGeneralBingoCard() {
       loading.value = true
-      data.value = await axios.get('http://localhost:3000/generalbingocard')
+      data.value = await axios.get('https://dioninsanity-barrows-bingo-backend.netlify.app/generalbingocard')
           .then(response => {
             loading.value = false
             return response.data
@@ -143,7 +143,7 @@ export default {
 
     async function fetchAllPlayerNames() {
       loading.value = true
-      data.value = await axios.get('http://localhost:3000/player/names')
+      data.value = await axios.get('https://dioninsanity-barrows-bingo-backend.netlify.app/player/names')
           .then(response => {
             loading.value = false
             return response.data

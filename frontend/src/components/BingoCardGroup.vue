@@ -25,7 +25,7 @@ export default {
 
     async function fetchAllBingoCardsFromPlayer(player_name) {
       loading.value = true
-      data.value = await axios.get(`http://localhost:3000/bingocard/${player_name}`)
+      data.value = await axios.get(`https://dioninsanity-barrows-bingo-backend.netlify.app/bingocard/${player_name}`)
           .then(response => {
             loading.value = false
             return response.data
