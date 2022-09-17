@@ -34,7 +34,7 @@
 import axios from "axios";
 import swal from "sweetalert";
 
-axios.defaults.baseURL = "https://dioninsanity-barrows-bingo-backend.netlify.app";
+axios.defaults.baseURL = "https://dioninsanity-barrows-backend.herokuapp.com";
 
 export default {
   name: 'LoginComponent',

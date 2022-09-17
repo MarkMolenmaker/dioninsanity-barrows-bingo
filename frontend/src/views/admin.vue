@@ -58,7 +58,7 @@ export default {
       return bingo_card_count;
     },
     createUser() {
-      axios.post('https://dioninsanity-barrows-bingo-backend.netlify.app/player/create',
+      axios.post('https://dioninsanity-barrows-backend.herokuapp.com/player/create',
           { name: this.new_user_name },
           { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
           .then(() => {
@@ -69,7 +69,7 @@ export default {
           });
     },
     addBingoCard(player_name) {
-      axios.post('https://dioninsanity-barrows-bingo-backend.netlify.app/bingocard/new',
+      axios.post('https://dioninsanity-barrows-backend.herokuapp.com/bingocard/new',
           { player: player_name },
           { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
           .then(() => {
@@ -80,7 +80,7 @@ export default {
           });
     },
     removeBingoCard(player_name) {
-      axios.post('https://dioninsanity-barrows-bingo-backend.netlify.app/bingocard/remove',
+      axios.post('https://dioninsanity-barrows-backend.herokuapp.com/bingocard/remove',
           { player: player_name },
           { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
           .then(() => {
@@ -91,7 +91,7 @@ export default {
           });
     },
     deletePlayer(player_name) {
-      axios.delete('https://dioninsanity-barrows-bingo-backend.netlify.app/player/' + player_name,
+      axios.delete('https://dioninsanity-barrows-backend.herokuapp.com/player/' + player_name,
           { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` } })
           .then(() => {
             this.$router.go()
@@ -111,7 +111,7 @@ export default {
 
     async function fetchAllPlayerNames() {
       loading.value = true
-      data.value = await axios.get('https://dioninsanity-barrows-bingo-backend.netlify.app/player/names')
+      data.value = await axios.get('https://dioninsanity-barrows-backend.herokuapp.com/player/names')
           .then(response => {
             loading.value = false
             return response.data
@@ -125,7 +125,7 @@ export default {
 
     async function fetchAllBingoCards() {
       loading.value = true
-      data.value = await axios.get('https://dioninsanity-barrows-bingo-backend.netlify.app/bingocard')
+      data.value = await axios.get('https://dioninsanity-barrows-backend.herokuapp.com/bingocard')
           .then(response => {
             loading.value = false
             return response.data

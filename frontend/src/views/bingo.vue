@@ -31,7 +31,7 @@ export default {
 
     async function fetchUserLoot(user_name) {
       loading.value = true
-      data.value = await axios.get(`https://dioninsanity-barrows-bingo-backend.netlify.app/player/${user_name}`)
+      data.value = await axios.get(`https://dioninsanity-barrows-backend.herokuapp.com/player/${user_name}`)
           .then(response => {
             loading.value = false
             return response.data
@@ -45,7 +45,7 @@ export default {
 
     async function fetchAllPlayerNames() {
       loading.value = true
-      data.value = await axios.get('https://dioninsanity-barrows-bingo-backend.netlify.app/player/names')
+      data.value = await axios.get('https://dioninsanity-barrows-backend.herokuapp.com/player/names')
           .then(response => {
             loading.value = false
             return response.data
