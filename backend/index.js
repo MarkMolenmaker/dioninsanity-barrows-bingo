@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/db');
@@ -62,5 +61,6 @@ app.use("/generalbingocard", generalBingoCardRoutes);
 const playerRoutes = require("./api/bingocard/route/player");
 app.use("/player", playerRoutes);
 
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(8080, () => {
+    console.log(`App is running on 8080`);
+});
