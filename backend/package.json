@@ -22,6 +22,7 @@
     "mongodb": "^4.9.0",
     "mongoose": "^6.5.3",
     "morgan": "^1.10.0",
+    "netlify-lambda": "^2.0.15",
     "nodemon": "^2.0.19",
     "serverless-http": "^3.0.2"
   }
